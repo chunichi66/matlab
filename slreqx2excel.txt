@@ -1,0 +1,23 @@
+? 方法：.slreqx → Excel のエクスポート手順
+?? 1. 要件セットを読み込む
+
+rs = slreq.load('your_requirements.slreqx');
+
+?? 2. 要件を取得する
+
+reqs = find(rs, '-type', 'Requirement');
+
+?? 3. 要件情報を抽出する
+
+以下のように、要件ID、概要、説明、ステータスなどをまとめます：
+
+n = numel(reqs);
+data = cell(n, 5); % 任意の列数に応じて変更
+
+for i = 1:n
+    data{i,1} = reqs(i).ID;
+    data{i,2} = reqs(i).Summary;
+    data{i,3} = reqs(i).Description;
+    data{i,4} = reqs(i).Type;
+    data{i,5} = reqs(i).Status;
+end
